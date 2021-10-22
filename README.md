@@ -21,7 +21,7 @@ The player will be moving side to side to avoid these obstacles.
 * Lose points when buying processed foods.
 * Gain points when buying healthy foods.
 * Track points.
-* Game over with the person not having enough point which will cause the person to have a heart attack.
+* Game over with the person loosing all their points which will cause the person to have a heart attack or reach the maximum time limit of 40 seconds. 
 
 ![untitled (2)](https://user-images.githubusercontent.com/34468962/138515271-0e981ee0-e23e-4b48-a402-c8381cc72d42.png)
 
