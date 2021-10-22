@@ -17,6 +17,7 @@ The player will be moving side to side to avoid these obstacles.
 # MVP Goals
 
 * Render the starting screen
+* Player and obstacles will be abstract shapes.
 * Have the player move side to side in a container
 * Lose points when buying processed foods.
 * Gain points when buying healthy foods.
