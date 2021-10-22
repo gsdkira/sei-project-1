@@ -23,6 +23,7 @@ The player will be moving side to side to avoid these obsticles.
 * Track points
 * Game over with the person having a heart attack and having no points left
 
+![untitled (1)](https://user-images.githubusercontent.com/34468962/138512816-45076993-d0b5-45fb-b4b7-e06da73bb060.png)
 # Stretch Goals
 
 * Have the player absorb points from healthy foods to gain points and make the game last longer
