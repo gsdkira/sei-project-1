@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    background-color: royalblue;
+    display: flex;
+}
+
+canvas {
+    background-color:lightsteelblue;
+    display: flex;
+}
+
+#container {
+background-color: lightslategrey;
+justify-content: center;
+height: 100%;
+margin: 0 auto;
+padding: 200px;
+display: grid;
+grid-gap: 100px;
+grid-template-rows: 100px 100px 100px;
+grid-template-columns: .25fr .5fr .25fr;
+grid-template-areas: "top-left top-left top-right"
+                      "main main main"
+                      "btm-left btm-right btm-right";
+}
+
+#top-left {
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: top-left;
+    margin: -15px;
+
+}
+
+#top-right {
+    background-color: lightsalmon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: top-right;
+}
+
+
+#btm-left {
+    background-color: lightyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: btm-left;
+}
+
+#btm-right {
+    background-color: lightseagreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: btm-right;
+}
+
+main {
+    grid-area: main;
+    
+}
+
