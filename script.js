@@ -40,6 +40,18 @@ let spinach = new Shopper (290, 0, '#125C13', 20, 20)
 let potatoChip = new Shopper (470, 0, '#C36A2D', 20, 20)
 let twinkie = new Shopper (640, 0, '#F4A442', 20, 20)
 
+//we have to establish a key movement with keyboard before the looop
+const keysToMove = (e) => {
+    switch (e.keyCode) {
+        case (65):
+        player.x -= 50
+        break
+        case(68):
+        player.x += 50
+        break
+    }
+}
+
 //set up game loop to be used in our timing functions
 const gameLoop = () => {
     //clear canvas for the animation loop to start again
@@ -54,5 +66,7 @@ const gameLoop = () => {
 }
 //set up game loop function, declaring what happens when our game is running 
 let gameStop = () => {clearInterval(gameInterval)}
+//add event listener after gameStop which is clear Interval
+document.addEventListener('keydown', keysToMove)
 //the timing function will determing how and when our game animates
 let gameInterval = setInterval(gameLoop, 50)
