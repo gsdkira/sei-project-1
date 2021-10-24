@@ -23,9 +23,21 @@ The player will be moving side to side to avoid these obstacles.
 * Gain points when buying healthy foods.
 * Track points.
 * Game over with the person loosing all their points which will cause the person to have a heart attack or reach the maximum time limit of 40 seconds. 
+<<<<<<< HEAD
+=======
 
 ![untitled (2)](https://user-images.githubusercontent.com/34468962/138515271-0e981ee0-e23e-4b48-a402-c8381cc72d42.png)
 
+>>>>>>> c8e3f8f74726522330a1cc38f3c4a1b8b5cf2bf5
+
+![untitled (2)](https://user-images.githubusercontent.com/34468962/138515271-0e981ee0-e23e-4b48-a402-c8381cc72d42.png)
+
+<<<<<<< HEAD
+=======
+* Have different levels of more obstacles to make the game harder for example like visiting a movie theather... where there are less healthy options 
+* Have a moving background where it will seem like the person is running through a location
+* Have sounds for when obstacles are touched.
+>>>>>>> c8e3f8f74726522330a1cc38f3c4a1b8b5cf2bf5
 
 # Stretch Goals
 
