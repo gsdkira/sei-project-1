@@ -1,66 +1,74 @@
-body {
+html,body {
     margin: 0;
-    background-color: royalblue;
-    display: flex;
-}
-
-canvas {
-    background-color:lightsteelblue;
-    display: flex;
-}
-
-#container {
-background-color: lightslategrey;
-justify-content: center;
-height: 100%;
-margin: 0 auto;
-padding: 200px;
-display: grid;
-grid-gap: 100px;
-grid-template-rows: 100px 100px 100px;
-grid-template-columns: .25fr .5fr .25fr;
-grid-template-areas: "top-left top-left top-right"
-                      "main main main"
-                      "btm-left btm-right btm-right";
-}
-
-#top-left {
-    background-color: lightgreen;
+    padding: 0;
+  }
+  
+  body {
+    padding-top: 1em;
+    text-align: center;
+    background-color: rgb(249, 243, 223);
+    /* background-image: url('../img/dungeonhell.png'); */
+    background-size: cover;
+    background-repeat: space;
+  }
+  
+  h1, h2, p {
+    font-family: 'VT323', monospace;;
+    /* font-family: monospace; */
+    color:lightseagreen;
+  }
+  
+  canvas {
+    /* background-image: url('../img/stone.png'); */
+    /* background-repeat: repeat; */
+    background-color: rgb(205, 242, 202);
+    width: 100%;
+    height: 450px;
+  }
+  
+  #container {
+  max-width: 50em;
+  /* height: 70vh; */
+  background-color: rgb(255, 200, 152);
+  margin: 0 auto;
+  padding: 1em;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: .25fr .5fr .25fr;
+  grid-template-columns: .25fr .5fr .25fr;
+  grid-template-areas: "top-left top-left top-right"
+                        "game game game"
+                        "btm-left btm-right btm-right";
+  }
+  
+  #top-left, #top-right, #btm-left, #btm-right {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color:rgb(255, 222, 250);
+  }
+  
+  #top-left {
     grid-area: top-left;
-    margin: -15px;
-
-}
-
-#top-right {
-    background-color: lightsalmon;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  }
+  
+  #top-right {
     grid-area: top-right;
-}
-
-
-#btm-left {
-    background-color: lightyellow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* background-color: #222; */
+    /* background-image: url('../img/funky-lines.png'); */
+  }
+  
+  main {
+    grid-area: game;
+  }
+  
+  
+  #btm-left {
     grid-area: btm-left;
-}
-
-#btm-right {
-    background-color: lightseagreen;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* background-color: #222; */
+  }
+  
+  #btm-right {
     grid-area: btm-right;
-}
-
-main {
-    grid-area: main;
-    
-}
-
+    /* background-color: #222; */
+  }
