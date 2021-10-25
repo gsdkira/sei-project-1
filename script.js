@@ -33,12 +33,25 @@ function Shopper (x, y, color, width, height) {
     }
 }
     
+function Food (x, y, color, width, height) {
+    this.x = Math.random()* game.width
+    this.y = Math.random()* game.height
+    this.color = color
+    this.width = width
+    this.height = height
+    this.alive = true
+    this.render = function () {
+        ctx.fillStyle = this.color
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+
+}
 //we'll give them their own 'draw methods to place them on the canvas
 let player = new Shopper(380, 410, '#113CFC', 40, 30)
-let watermelon = new Shopper (110, 0, '#FF5C58', 20, 20)
-let spinach = new Shopper (290, 0, '#125C13', 20, 20)
-let potatoChip = new Shopper (470, 0, '#C36A2D', 20, 20)
-let twinkie = new Shopper (640, 0, '#F4A442', 20, 20)
+let watermelon = new Food (110, 0, '#FF5C58', 20, 20)
+let spinach = new Food (290, 0, '#125C13', 20, 20)
+let potatoChip = new Food (470, 0, '#C36A2D', 20, 20)
+let twinkie = new Food (640, 0, '#F4A442', 20, 20)
 
 //we have to establish a key movement with keyboard before the looop
 const keysToMove = (e) => {
