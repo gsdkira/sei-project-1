@@ -67,26 +67,69 @@ const keysToMove = (e) => {
     }
 }
 
-// set up game loop to be used in our timing functions)
-
-// let y = 0
-// // const gameLoop = () => {
-//     window.requestAnimationFrame(function loop() {
-//     y += 10
-//     // ctx.clearRect(0,0,game.width, game.height)
-//     watermelon.render()
-//     spinach.render()
-//     potatoChip.render()
-//     twinkie.render()
-//     window.requestAnimationFrame(loop)
-    
-// })
-
 const foodFalling = () => {
         for(i = 0; i < 4; i++) {
             allFoods[i].y += 10
         }
     }
+
+const watermelonDetectHit = () => {
+    if(
+        player.x < watermelon.x + watermelon.width &&
+        player.x + player.width > watermelon.x &&
+        player.y < watermelon.y + watermelon.height &&
+        player.y + player.height > watermelon.y)
+        {
+            watermelon.alive = false
+            document.querySelector('#top-right> h2').innerText="+10"
+        }
+    }
+
+    const spinachDetectHit = () => {
+        if(
+            player.x < spinach.x + spinach.width &&
+            player.x + player.width > spinach.x &&
+            player.y < spinach.y + spinach.height &&
+            player.y + player.height > spinach.y)
+        {
+            spinach.alive = false
+            document.querySelector('#top-right> h2').innerText='+20' 
+        }
+    }
+
+    const potatoChipDetectHit = () => {
+        if(
+            player.x < potatoChip.x + potatoChip.width &&
+            player.x + player.width > potatoChip.x &&
+            player.y < potatoChip.y + potatoChip.height &&
+            player.y + player.height > potatoChip.y)
+        {
+            potatoChip.alive = false
+            document.querySelector('#top-right> h2').innerText='-20' 
+        }
+    }
+
+    const twinkieDetectHit = () => {
+        if(
+            player.x < twinkie.x + twinkie.width &&
+            player.x + player.width > twinkie.x &&
+            player.y < twinkie.y + twinkie.height &&
+            player.y + player.height > twinkie.y)
+        {
+            twinkie.alive = false
+            document.querySelector('#top-right> h2').innerText='-20' 
+        }
+    }
+    
+
+// const foodSpawn = () => {
+//     for(i = 0; i < 4; i++) {
+//         if(allFoods.alive = false) {
+//         allFoods[i].x = Math.floor(Math.random())
+//         x++
+//     }
+//     foodSpawn()
+// }
 
 
 const gameLoop = () => {
@@ -96,7 +139,12 @@ const gameLoop = () => {
             allFoods[i].render()
         }
         foodFalling()
+        watermelonDetectHit()
+        spinachDetectHit()
+        twinkieDetectHit()
+        potatoChipDetectHit()
         player.render()
+
     }
 
 //     const foodFalling = () => {
@@ -111,7 +159,8 @@ let gameStop = () => {clearInterval(gameInterval)}
 //add event listener after gameStop which is clear Interval
 document.addEventListener('keydown', keysToMove)
 //the timing function will determing how and when our game animates
-let gameInterval = setInterval(gameLoop, 50)
+let gameInterval = setInterval(gameLoop, 75)
+// let newFoodSpawn = setInterval(foodSpawn, 10)}
 
 
 
@@ -269,4 +318,20 @@ let gameInterval = setInterval(gameLoop, 50)
 //     //     twinkie.draw();
 //     // }
 //     // player.draw()
+
+// set up game loop to be used in our timing functions)
+
+// let y = 0
+// // const gameLoop = () => {
+//     window.requestAnimationFrame(function loop() {
+//     y += 10
+//     // ctx.clearRect(0,0,game.width, game.height)
+//     watermelon.render()
+//     spinach.render()
+//     potatoChip.render()
+//     twinkie.render()
+//     window.requestAnimationFrame(loop)
+    
+// })
+
 
