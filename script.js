@@ -54,7 +54,9 @@ let twinkie = new Food (640, 0, '#F4A442', 20, 20)
 
 let allFoods = [watermelon, spinach, potatoChip, twinkie]
 
-let gameScore = 20
+let gameScore = 50
+let gamePoints = 3
+
 
 //we have to establish a key movement with keyboard before the looop
 const keysToMove = (e) => {
@@ -67,22 +69,23 @@ const keysToMove = (e) => {
         break
     }
 }
-
+// function for the food to fall
 const foodFalling = () => {
         for(i = 0; i < 4; i++) {
             allFoods[i].y += 10
         }
     }
-
+//function to create new foods for interval
 // const foodSpawn = () => {
 //     for(i = 0; i < 4; i++) {
-//         allFoods[i].x = Math.random(Math.floor())
-//         allFoods[i].y = Math.random(Math.floor())
+//         if (allFoods.alive = true) { 
+//         allFoods[i] = allFoods[i] * Math.random(Math.floor())
 //         i++
 //     }
+//     }
 // }
-
-const watermelonDetectHit = () => {
+//Detect hit collision for watermelon
+let watermelonDetectHit = () => {
     if(
         player.x < watermelon.x + watermelon.width &&
         player.x + player.width > watermelon.x &&
@@ -90,12 +93,12 @@ const watermelonDetectHit = () => {
         player.y + player.height > watermelon.y)
         {
             watermelon.alive = false
-            document.querySelector('#top-right> h2').innerText="+10"
+            document.querySelector('#top-right> h2').innerText="+12"
+            gameScore = gameScore + gamePoints
         }
-        gameScore = gameScore + 10
     }
-
-    const spinachDetectHit = () => {
+//Detect hit collision for spinach
+    let spinachDetectHit = () => {
         if(
             player.x < spinach.x + spinach.width &&
             player.x + player.width > spinach.x &&
@@ -103,12 +106,12 @@ const watermelonDetectHit = () => {
             player.y + player.height > spinach.y)
         {
             spinach.alive = false
-            document.querySelector('#top-right> h2').innerText='+20' 
+            document.querySelector('#top-right> h2').innerText='+12' 
+            gameScore = gameScore + gamePoints
         }
-        gameScore = gameScore + 20
     }
-
-    const potatoChipDetectHit = () => {
+//Detect hit collision for potatoChip
+    let potatoChipDetectHit = () => {
         if(
             player.x < potatoChip.x + potatoChip.width &&
             player.x + player.width > potatoChip.x &&
@@ -116,12 +119,12 @@ const watermelonDetectHit = () => {
             player.y + player.height > potatoChip.y)
         {
             potatoChip.alive = false
-            document.querySelector('#top-right> h2').innerText='-10' 
+            document.querySelector('#top-right> h2').innerText='-12' 
+            gameScore = gameScore - gamePoints
         }
-       gameScore = gameScore - 10
     }
-
-    const twinkieDetectHit = () => {
+//Detect hit collision for twinkie
+    let twinkieDetectHit = () => {
         if(
             player.x < twinkie.x + twinkie.width &&
             player.x + player.width > twinkie.x &&
@@ -129,17 +132,25 @@ const watermelonDetectHit = () => {
             player.y + player.height > twinkie.y)
         {
             twinkie.alive = false
-            document.querySelector('#top-right> h2').innerText='-10' 
+            document.querySelector('#top-right> h2').innerText='-12' 
+            gameScore = gameScore - gamePoints
         }
-        gameScore = gameScore - 10
     }
-
+//draw a score board to track points
     function drawScore() {
-        ctx.font = "16px Arial";
+        ctx.font = "24px Arial";
         ctx.fillStyle = '#FF5C58';
-        ctx.fillText ("Score: "+gameScore, 700, 20)
+        ctx.fillText ("Score: "+gameScore, 650, 30)
     }
 
+    let heartAttack = () => {
+        if (gameScore < 39) {
+            player.alive = false
+            document.querySelector('#btm-right > h2').innerText='You had a heart attack!'
+        }
+    }
+    
+//gameLoop for the game
 const gameLoop = () => {
         //clear canvas for the animation loop to start again
         ctx.clearRect(0,0, game.width, game.height)
@@ -147,22 +158,27 @@ const gameLoop = () => {
             allFoods[i].render()
         }
         drawScore()
+        // setInterval(foodSpawn, 5)
         foodFalling()
         watermelonDetectHit()
         spinachDetectHit()
         twinkieDetectHit()
         potatoChipDetectHit()
         player.render()
-        // foodSpawn()
+        heartAttack()
     }
+        
 
-
-
-//add event listener after gameStop which is clear Interval
+//key movement event listener
 document.addEventListener('keydown', keysToMove)
 //the timing function will determing how and when our game animates
-let gameInterval = setInterval(gameLoop, 75)
-let newFoodSpawn = setInterval(foodSpawn, 5)
+let gameInterval = setInterval(gameLoop, 70)
+// let newFoodSpawn = setInterval(foodSpawn, 5)
+startBtn = document.getElementById('startGame')
+startBtn.addEventListener('click', (e) => {
+    console.log('click')
+})
+
 
 
 
