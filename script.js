@@ -1,18 +1,9 @@
-//Set up canvas
 const game = document.getElementById('canvas')
 
-//we're going to set up width and height variables
-//that means we are going to use setAttribute together with get computed Style
 game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
-// console.log('current game width', game.width)
-// console.log('current game height', game.height)
-//now we need to get the games contect so we can add to it, draw on it, create animations 
-//we do this with the built in canvas methos, getContext
 const ctx = game.getContext('2d')
 
-// we're going to follow some sort of basic Object Oriented Programming 'rules' to build an interactive game 
-// we'll create objects for our player
 function Shopper(x, y, color, width, height) {
     this.x = x
     this.y = y
@@ -47,7 +38,6 @@ let gameScore = 120
 let gamePoints = 3
 
 
-//we have to establish a key movement with keyboard before the looop
 const keysToMove = (e) => {
     switch (e.keyCode) {
         case (65):
@@ -68,20 +58,16 @@ const keysToMove = (e) => {
 //foods function
 const allFoods = []
 function addFood() {
-    // console.log('addFood')
     for (let i = 0; i <= 5; i++) {
-        // console.log('for loop')
         let candy = new Food(Math.random()* game.width, 0, "red", 20, 20)
         let donuts = new Food(Math.random() * game.width, 0, '#FFC0CB', 20, 20)
         let potatoChip = new Food(Math.random() * game.width, 0, 'white', 20, 20)
         let twinkie = new Food(Math.random() * game.width, 0, '#F4A442', 20, 20)
-        // console.log('this is the new food', watermelon)
         allFoods.push(candy)
         allFoods.push(donuts)
         allFoods.push(potatoChip)
         allFoods.push(twinkie)
     }
-    // console.log('j loop')
 }
 //detect hit
 const thingDetectHit = (item) => {
@@ -100,13 +86,11 @@ const foodFalling = () => {
     for (let i = 0; i < allFoods.length; i++) {
         allFoods[i].y += 10
     }
-    // console.log(foodFalling)
 }
 //renders the food
 const renderFood = () => {
     for (let j = 0; j < allFoods.length; j++) {
         allFoods[j].render()
-        // allFoods[j].y += 10
     }
 }
 //detect the food hit
@@ -124,6 +108,12 @@ const heartAttack = () => {
     }
 }
 
+// const youSurvived = () => {
+//     if (heartAttack = false) {
+//         document.querySelector('#btm-left > h2').innerText = 'You made some awesome choices!'
+//     }
+// }
+
 //draw a score board to track points
 function drawScore() {
     ctx.font = "24px Arial";
@@ -131,10 +121,15 @@ function drawScore() {
     ctx.fillText("Score: " + gameScore, 650, 30)
 }
 //start game at 2 seconds
+
 const startGame = () => {
     const spawnFood = setInterval(addFood, 2000)
+    }
 
-}
+const timeOut = setTimeout(function(){
+        clearInterval(gameInterval);
+    },40000)
+
 //gameLoop for the game
 const gameLoop = () => {
     //clear canvas for the animation loop to start again
@@ -145,6 +140,7 @@ const gameLoop = () => {
     foodHitDetect()
     heartAttack()
     drawScore()
+    // youSurvived()
 }
 
 
