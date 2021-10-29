@@ -1,9 +1,3 @@
-// we are making a supermarket shopping game
-//the point of the game is for the player to gain points by collision or lose points by collision
-// we will have three elements, player, good points, bad points
-//the player can move from right to left
-//the player can lose all points and lose or last for at least 40 seconds
-
 //Set up canvas
 const game = document.getElementById('canvas')
 
@@ -46,8 +40,9 @@ function Food(x, y, color, width, height) {
 
 }
 //we'll give them their own 'draw methods to place them on the canvas
-let player = new Shopper(380, 410, '#113CFC', 50, 30)
+const player = new Shopper(380, 410, '#113CFC', 50, 30)
 
+//game score starts at 120
 let gameScore = 120
 let gamePoints = 3
 
@@ -70,7 +65,7 @@ const keysToMove = (e) => {
             break 
     }
 }
-
+//foods function
 const allFoods = []
 function addFood() {
     // console.log('addFood')
@@ -88,7 +83,7 @@ function addFood() {
     }
     // console.log('j loop')
 }
-
+//detect hit
 const thingDetectHit = (item) => {
     if (
         player.x < item.x + item.width &&
@@ -100,27 +95,27 @@ const thingDetectHit = (item) => {
         gameScore -= gamePoints
     }
 }
-
+//food falling
 const foodFalling = () => {
     for (let i = 0; i < allFoods.length; i++) {
         allFoods[i].y += 10
     }
     // console.log(foodFalling)
 }
-
+//renders the food
 const renderFood = () => {
     for (let j = 0; j < allFoods.length; j++) {
         allFoods[j].render()
         // allFoods[j].y += 10
     }
 }
-
+//detect the food hit
 const foodHitDetect = () => {
     for (let i = 0; i < allFoods.length; i++){
         thingDetectHit(allFoods[i])
     }
 }
-
+//heart attack message
 const heartAttack = () => {
     if (gameScore < 1) {
         player.alive = false
@@ -135,7 +130,7 @@ function drawScore() {
     ctx.fillStyle = '#FF5C58';
     ctx.fillText("Score: " + gameScore, 650, 30)
 }
-
+//start game at 2 seconds
 const startGame = () => {
     const spawnFood = setInterval(addFood, 2000)
 
@@ -146,7 +141,6 @@ const gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height)
     player.render()
     renderFood()
-    // addFood()
     foodFalling()
     foodHitDetect()
     heartAttack()
@@ -158,17 +152,10 @@ const gameLoop = () => {
 document.addEventListener('keydown', keysToMove)
 //the timing function will determing how and when our game animates
 const gameInterval = setInterval(gameLoop, 80)
-// let gameStop = () => {clearInterval(gameInterval)}
-
 
 startGame()
 
-const strButton = document.getElementById('startButton');
-strButton.addEventListener('click', (e) => {
-    const startGame = () => {
-        const spawnFood = setInterval(addFood, 2000)
-    }
-})
+
 
 
 
