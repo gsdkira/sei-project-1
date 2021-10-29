@@ -46,7 +46,7 @@ function Food(x, y, color, width, height) {
 
 }
 //we'll give them their own 'draw methods to place them on the canvas
-let player = new Shopper(380, 410, '#113CFC', 60, 30)
+let player = new Shopper(380, 410, '#113CFC', 50, 30)
 
 let gameScore = 120
 let gamePoints = 3
