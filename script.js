@@ -46,9 +46,9 @@ function Food(x, y, color, width, height) {
 
 }
 //we'll give them their own 'draw methods to place them on the canvas
-let player = new Shopper(380, 410, '#113CFC', 40, 30)
+let player = new Shopper(380, 410, '#113CFC', 60, 30)
 
-let gameScore = 50
+let gameScore = 0
 let gamePoints = 3
 
 
@@ -165,9 +165,11 @@ const foodHitDetect = () => {
 // }
 
 let heartAttack = () => {
-    if (gameScore < 1) {
+    if (gameScore > 100) {
         player.alive = false
         document.querySelector('#btm-right > h2').innerText = 'You had a heart attack!'
+        clearInterval(gameInterval)
+        // clearInterval(gameLoop)
     }
 }
 
@@ -179,7 +181,7 @@ function drawScore() {
 }
 
 const startGame = () => {
-    const spawnFood = setInterval(addFood, 3000)
+    const spawnFood = setInterval(addFood, 2000)
 
 }
 //gameLoop for the game
@@ -207,26 +209,18 @@ const gameLoop = () => {
 document.addEventListener('keydown', keysToMove)
 //the timing function will determing how and when our game animates
 let gameInterval = setInterval(gameLoop, 80)
+// let gameStop = () => {clearInterval(gameInterval)}
+
 
 startGame()
 
+const strButton = document.getElementById('startButton');
 
 
 
 
 
 
-
-// let gameEndMsg = () => {
-    //     if (gameEnd == true) {
-    //         document.querySelector('btm-right > h2').innerText = 'Great Job, You survived!'
-    //         gameEnd()
-
-    //     }
-    // }
-
-// //set up game loop function, declaring what happens when our game is running 
-// // let gameStop = () => {clearInterval(gameInterval)}
 // // //add event listener after gameStop which is clear Interval
 
 
