@@ -56,11 +56,18 @@ let gamePoints = 3
 const keysToMove = (e) => {
     switch (e.keyCode) {
         case (65):
+            //move left
             player.x -= 50
+            if(player.x <= 0) {
+                player.x = 0
+            }
             break
         case (68):
             player.x += 50
-            break
+            if(player.x + player.width >= game.width) {
+                player.x = game.width - player.width
+            }
+            break 
     }
 }
 
@@ -157,6 +164,11 @@ const gameInterval = setInterval(gameLoop, 80)
 startGame()
 
 const strButton = document.getElementById('startButton');
+strButton.addEventListener('click', (e) => {
+    const startGame = () => {
+        const spawnFood = setInterval(addFood, 2000)
+    }
+})
 
 
 
