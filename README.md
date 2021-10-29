@@ -6,6 +6,8 @@ In this game our player is living their daily life shopping in the supermarket. 
 
 The player will be moving side to side to avoid these obstacles. 
 
+https://gsdkira.github.io/sei-project-1/
+
 
 # Technical Overview
 

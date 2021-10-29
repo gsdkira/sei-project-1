@@ -108,12 +108,6 @@ const heartAttack = () => {
     }
 }
 
-// const youSurvived = () => {
-//     if (heartAttack = false) {
-//         document.querySelector('#btm-left > h2').innerText = 'You made some awesome choices!'
-//     }
-// }
-
 //draw a score board to track points
 function drawScore() {
     ctx.font = "24px Arial";
@@ -125,6 +119,8 @@ function drawScore() {
 const startGame = () => {
     const spawnFood = setInterval(addFood, 2000)
     }
+
+ //timeout function after 40 seconds   
 
 const timeOut = setTimeout(function(){
         clearInterval(gameInterval);
@@ -150,6 +146,15 @@ document.addEventListener('keydown', keysToMove)
 const gameInterval = setInterval(gameLoop, 80)
 
 startGame()
+
+
+
+// const youSurvived = () => {
+//     if (heartAttack = false) {
+//         document.querySelector('#btm-left > h2').innerText = 'You made some awesome choices!'
+//     }
+// }
+
 
 
 
