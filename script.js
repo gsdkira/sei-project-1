@@ -4,6 +4,7 @@ game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
 const ctx = game.getContext('2d')
 
+
 function Shopper(x, y, color, width, height) {
     this.x = x
     this.y = y
@@ -103,7 +104,7 @@ const foodHitDetect = () => {
 const heartAttack = () => {
     if (gameScore < 1) {
         player.alive = false
-        document.querySelector('#btm-right > h2').innerText = 'You had a heart attack!'
+        document.querySelector('#btm-right > h2').innerText = 'You lost. You had a heart attack!'
         clearInterval(gameInterval)
     }
 }
@@ -123,7 +124,8 @@ const startGame = () => {
  //timeout function after 40 seconds   
 
 const timeOut = setTimeout(function(){
-        clearInterval(gameInterval);
+        clearInterval(gameInterval)
+        document.querySelector('#btm-right > h2').innerText = 'You win, you made some healthy choices!'
     },40000)
 
 //gameLoop for the game
@@ -136,7 +138,7 @@ const gameLoop = () => {
     foodHitDetect()
     heartAttack()
     drawScore()
-    // youSurvived()
+    youSurvived()
 }
 
 
@@ -147,15 +149,11 @@ const gameInterval = setInterval(gameLoop, 80)
 
 startGame()
 
+const resetBtn = document.querySelector('#button')
 
-
-// const youSurvived = () => {
-//     if (heartAttack = false) {
-//         document.querySelector('#btm-left > h2').innerText = 'You made some awesome choices!'
-//     }
-// }
-
-
+resetBtn.addEventListener('click', (e) => {
+    e.startGame = setInterval(addFood, 2000)
+})
 
 
 
