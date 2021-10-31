@@ -4,8 +4,8 @@ game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
 const ctx = game.getContext('2d')
 
-
-function Shopper(x, y, color, width, height) {
+//class for shopper
+function Shopper (x, y, color, width, height) {
     this.x = x
     this.y = y
     this.color = color
@@ -17,8 +17,8 @@ function Shopper(x, y, color, width, height) {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-// create objects for Food
-function Food(x, y, color, width, height) {
+// class for food
+function Food (x, y, color, width, height) {
     this.x = x
     this.y = y
     this.color = color
@@ -31,14 +31,14 @@ function Food(x, y, color, width, height) {
     }
 
 }
-//we'll give them their own 'draw methods to place them on the canvas
+//player
 const player = new Shopper(380, 410, '#113CFC', 50, 30)
 
 //game score starts at 120
 let gameScore = 120
 let gamePoints = 3
 
-
+//key movement for player
 const keysToMove = (e) => {
     switch (e.keyCode) {
         case (65):
@@ -100,7 +100,7 @@ const foodHitDetect = () => {
         thingDetectHit(allFoods[i])
     }
 }
-//heart attack message
+//heart attack message when you eat too much junkfood
 const heartAttack = () => {
     if (gameScore < 1) {
         player.alive = false
@@ -115,14 +115,13 @@ function drawScore() {
     ctx.fillStyle = '#FF5C58';
     ctx.fillText("Score: " + gameScore, 650, 30)
 }
-//start game at 2 seconds
 
+//start game at 2 seconds
 const startGame = () => {
     const spawnFood = setInterval(addFood, 2000)
     }
 
- //timeout function after 40 seconds   
-
+ //timeout function after 40 seconds declaring winner  
 const timeOut = setTimeout(function(){
         clearInterval(gameInterval)
         document.querySelector('#btm-right > h2').innerText = 'You win, you made some healthy choices!'
@@ -138,22 +137,20 @@ const gameLoop = () => {
     foodHitDetect()
     heartAttack()
     drawScore()
-    youSurvived()
 }
 
 
 //key movement event listener
 document.addEventListener('keydown', keysToMove)
 //the timing function will determing how and when our game animates
-const gameInterval = setInterval(gameLoop, 80)
+let gameInterval = setInterval(gameLoop, 80)
 
 startGame()
-
-const resetBtn = document.querySelector('#button')
-
-resetBtn.addEventListener('click', (e) => {
-    e.startGame = setInterval(addFood, 2000)
-})
+//refresh button
+function reload() {
+    reload = location.reload();
+}
+reloadButton.addEventListener("click", reload, false);
 
 
 

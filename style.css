@@ -72,3 +72,8 @@ html,body {
     grid-area: btm-right;
     /* background-color: #222; */
   }
+
+  button {
+    color : salmon;
+    font-family: monospace;
+  }
